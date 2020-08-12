@@ -1,0 +1,21 @@
+{
+  "name": "nonad",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "src",
+    "test": "test"
+  },
+  "dependencies": {
+    "expect-type": "^0.7.4"
+  },
+  "devDependencies": {
+    "typescript": "^4.0.0-beta"
+  },
+  "scripts": {
+    "dtslint": "dtslint test/types"
+  },
+  "author": "David Richey",
+  "license": "ISC"
+}
