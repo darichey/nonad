@@ -11,7 +11,7 @@
     "expect-type": "^0.7.4"
   },
   "devDependencies": {
-    "typescript": "^4.0.0-beta"
+    "typescript": "4.1.0-dev.20200817"
   },
   "scripts": {
     "dtslint": "dtslint test/types"

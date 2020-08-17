@@ -1,22 +1,14 @@
-import { If, BoolToString } from "./bool"
+import { If } from "./bool"
 import { Eq, Intersects } from "./typeops"
-import { Tail, IsNil } from "./list"
 
 export type Nonad<Type, Keys extends keyof Type> = {
   [Prop in Keys]: Type[Prop];
 }
 
-// This can be written in a much better way after https://github.com/microsoft/TypeScript/pull/40002
-export type Full<T, List extends any[], Acc = {}> = {
-  "true":
-    If<Eq<T, Acc>,
-      Acc,
-      never>
-  "false":
-    If<Intersects<Acc, List[0]>,
-      never,
-      Full<T, Tail<List>, Acc & List[0]>>
-}[BoolToString<IsNil<List>>]
+export type Full<T, List extends any[], Acc = {}> =
+  List extends [infer H, ...infer Tail]
+  ? If<Intersects<Acc, H>, never, Full<T, Tail, Acc & H>>
+  : If<Eq<T, Acc>, Acc, never>
 
 //// Value Land ////
 
